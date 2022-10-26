@@ -1,0 +1,37 @@
+﻿@model FPTBook.Models.Book
+
+<div class="row text-center">
+    <div class="col">
+        <img src="@Model.Image" width="400" height="400">
+    </div>
+    <div class="col">
+        <table class="table-bordered bg-light">
+            <tr>
+                <th colspan="2" class="h3 text-primary">@Model.Name</th>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>@Model.Price</td>
+            </tr>
+            <tr>
+                <th>Author</th>
+                <td>@Model.Author</td>
+            </tr>
+            <tr>
+                <th>Publisher</th>
+                <td>@Model.Publisher</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>  @Model.CategoryName </td>
+                <td>
+                    <form asp-controller="Order" asp-action="Add">
+                        <input type="hidden" name="id" value="@Model.Id">
+                        <input type="number" name="quantity" />
+                        <input type="submit" value="Order" class="btn btn-warning bold-btn">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

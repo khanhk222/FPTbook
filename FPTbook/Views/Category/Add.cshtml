@@ -1,0 +1,18 @@
+﻿@model FPTBook.Models.Category
+
+<form class="card p-3 bg-light" method="post" asp-controller="Category" asp-action="Add">
+    <h4 class="text text-success">Add new category</h4>
+    <div class="form-group">
+        <label class="h6 text-primary" asp-for="@Model.Name"></label>
+        <input class="form-control" asp-for="@Model.Name" />
+        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+    </div>
+    <div class="form-group">
+        <label class="h6 text-primary" asp-for="@Model.Description"></label>
+        <input class="form-control" asp-for="@Model.Description" />
+        <span class="text-danger" asp-validation-for="@Model.Description"></span>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-warning" type="submit" value="Add" />
+    </div>
+</form>

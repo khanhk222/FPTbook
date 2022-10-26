@@ -1,0 +1,39 @@
+﻿@model FPTBook.Models.Book
+
+<form method="post" asp-controller="Book" asp-action="Add">
+    <div class="form-group">
+        <label class="h4 text-success">Name</label>
+        <input class="form-control" asp-for="@Model.Name" />
+        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Price"></label>
+        <input class="form-control" asp-for="@Model.Price" />
+        <span class="text-danger" asp-validation-for="@Model.Price"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Author"></label>
+        <input class="form-control" asp-for="@Model.Author" />
+        <span class="text-danger" asp-validation-for="@Model.Author"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Publisher"></label>
+        <input class="form-control" asp-for="@Model.Publisher" />
+        <span class="text-danger" asp-validation-for="@Model.Publisher"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success" asp-for="@Model.Image"></label>
+        <input class="form-control" asp-for="@Model.Image" />
+        <span class="text-danger" asp-validation-for="@Model.Image"></span>
+    </div>
+    <div class="form-group">
+        <label class="h4 text-success">Category Name</label>
+        <select class="list-group-item" required
+                asp-for="@Model.CategoryId"
+                asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))">
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-warning" value="Add" />
+    </div>
+</form>

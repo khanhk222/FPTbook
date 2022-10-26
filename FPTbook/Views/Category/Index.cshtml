@@ -1,0 +1,21 @@
+﻿@model List<Category>
+
+<table class="table table-info">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th><a asp-controller="Category" asp-action="Add" class="btn btn-warning">Add</a></th>
+    </tr>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Id</td>
+            <td>@c.Name</td>
+            <td>@c.Description</td>
+            <td>
+                <a asp-controller="Category" asp-action="Edit" class="btn btn-warning" asp-route-id="@c.Id">Edit</a>
+            </td>
+        </tr>
+    }
+</table>

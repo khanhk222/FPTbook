@@ -1,0 +1,37 @@
+﻿@model List<Book>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th class="text-center">
+                Name
+            </th>
+            <th class="text-center">
+                Price
+            </th>
+            <th class="text-center">
+                Image
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    @book.Name
+                </td>
+                <td>
+                    @book.Price
+                </td>
+                <td><img src="@book.Image" width="50"height="50" /> </td>
+                <td>
+                    <form asp-controller="Customer" asp-action="Detail">
+                        <input type="hidden" name="id" value="@book.Id">
+                        <input type="submit" value="Detail" class="btn btn-warning bold-btn">
+                    </form>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

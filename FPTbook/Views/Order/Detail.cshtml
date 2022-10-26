@@ -1,0 +1,47 @@
+﻿@model List<Order>
+
+@if (Model.Count == 0)
+{
+    <h4 class="text text-danger text-center"> No book found !</h4>
+}
+<div class="container text-center">
+    <table class="table table-bordered">
+        <tr style="background-color: cornflowerblue">
+            <th>Book Name</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Date</th>
+            <th>Image</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (var order in Model)
+        {
+            @if (order.UserEmail == User.Identity.Name)
+            {
+                <tr>
+                    @{
+                        for (int i = 0; i < ViewBag.Books.Count; i++)
+                        {
+                            if (order.BookId == ViewBag.Books[i].Id)
+                            {
+                                <td><text>@ViewBag.Books[i].Name</text></td>
+                            }
+                        }
+                    }
+                    <td>@order.OrderQuantity</td>
+                    <td>@order.OrderPrice</td>
+                    <td>@order.OrderDate</td>
+                    <td>
+                        <a asp-controller="Book" asp-action="Detail" asp-route-id="@order.BookId">
+                            <img src="@order.Book.Image" width="100" height="100" />
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-controller="Order" asp-action="Delete" class="btn btn-danger" asp-route-id="@order.Id"
+                   onclick="return confirm('Are you sure to remove this book ?');">Remove</a>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+</div>
